@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class NewBehaviourScript : MonoBehaviour
+public class AgentMovement : MonoBehaviour
 {
 
     [SerializeField]
@@ -17,6 +17,8 @@ public class NewBehaviourScript : MonoBehaviour
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         if (_navMeshAgent == null){
             Debug.LogError("Herlo");
+            Debug.ClearDeveloperConsole();
+            
 
         }
         else {
