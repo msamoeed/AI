@@ -5,7 +5,7 @@ using UnityEngine;
 public class LineOfSight : MonoBehaviour
 {
     public enum Sensitivity {HIGH,LOW};
-    public Sensitivity sensitivity = Sensitivity.HIGH;
+    public Sensitivity sensitivity = Sensitivity.LOW;
     public bool targetInSight = false;
     public float fieldOfVision= 45f;
     public Transform target = null;
@@ -27,7 +27,6 @@ public class LineOfSight : MonoBehaviour
         Vector3 dirToTarget = target.position - myEyes.position;
         float angle=Vector3.Angle(myEyes.forward, dirToTarget);
         if(angle<= fieldOfVision){
-            Debug.Log(angle);
             return true;
         }
         else{

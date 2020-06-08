@@ -13,6 +13,9 @@ public class Enemy_FSM : MonoBehaviour {
     private Health playerHealth;
 
     public float maxDamage = 10f;
+   
+     
+     
 
     // Enums to keep states
     public enum ENEMY_STATES { patrol, chase, attack }
@@ -27,17 +30,19 @@ public class Enemy_FSM : MonoBehaviour {
             StopAllCoroutines ();
             switch (currentState) {
                 case ENEMY_STATES.patrol:
-                    StartCoroutine (EnemyPatrol ());
+                    StartCoroutine(EnemyPatrol());
                     break;
                 case ENEMY_STATES.chase:
-                    StartCoroutine (EnemyChase ());
+                    StartCoroutine (EnemyChase());
                     break;
                 case ENEMY_STATES.attack:
-                    StartCoroutine (EnemyAttack ());
+                    StartCoroutine (EnemyAttack());
                     break;
             }
         }
     }
+   
+ 
 
     private void Awake () {
         checkMyVision = GetComponent<LineOfSight > ();
@@ -57,7 +62,6 @@ public class Enemy_FSM : MonoBehaviour {
     }
 
     public IEnumerator EnemyPatrol () {
-        print ("Patroling");
         while (currentState == ENEMY_STATES.patrol) {
             agent.speed = 30;
             checkMyVision.sensitivity = LineOfSight.Sensitivity.HIGH;
@@ -69,7 +73,6 @@ public class Enemy_FSM : MonoBehaviour {
             }
             while (checkMyVision.targetInSight) {
                 agent.isStopped = true;
-                print ("Patrol -> Chasing  ");
                 CurrentState = ENEMY_STATES.chase;
                 yield break;
             }
@@ -79,7 +82,6 @@ public class Enemy_FSM : MonoBehaviour {
 
     }
     public IEnumerator EnemyChase () {
-        print ("Chasing");
         while (currentState == ENEMY_STATES.chase) {
             checkMyVision.sensitivity = LineOfSight.Sensitivity.LOW;
             agent.isStopped = false;
@@ -89,19 +91,17 @@ public class Enemy_FSM : MonoBehaviour {
             // agent.CalculatePath (checkMyVision.lastKnownSighting, agent.path);
             bool destSet = agent.SetDestination (checkMyVision.lastknownSight);
             bool pending = agent.pathPending;
+           
             while (agent.pathPending) {
                 yield return null;
             }
-            print ($"Path Pending: {agent.pathPending}");
             if (agent.remainingDistance <= agent.stoppingDistance) {
                 agent.isStopped = true;
                 // print ($"Target In Sight for Chase ? {checkMyVision.targetInSight} ");
                 if (!checkMyVision.targetInSight) {
-                    print ("Chasing -> Patrol");
                     CurrentState = ENEMY_STATES.patrol;
                 } else {
                     // print ("Sqwitching to Attack!!!!!");
-                    print ("Chasing -> Attack");
                     CurrentState = ENEMY_STATES.attack;
                 }
                 yield break;
@@ -116,7 +116,6 @@ public class Enemy_FSM : MonoBehaviour {
         //  print("Agent Stopping Distance: " + agent.stoppingDistance);
     }
     public IEnumerator EnemyAttack () {
-        print ("Attacking enemy");
         while (currentState == ENEMY_STATES.attack) {
             agent.isStopped = false;
             // agent.ResetPath();
@@ -126,7 +125,6 @@ public class Enemy_FSM : MonoBehaviour {
                 yield return null;
             }
             if (agent.remainingDistance > agent.stoppingDistance) {
-                print ("Attack -> Chasing");
                 CurrentState = ENEMY_STATES.chase;
                 yield break;
             } else {
@@ -144,4 +142,6 @@ public class Enemy_FSM : MonoBehaviour {
     void Update () {
 
     }
+
+  
 }
