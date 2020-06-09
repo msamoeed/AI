@@ -25,7 +25,7 @@ public class DetectCol : MonoBehaviour
             
      if (other.tag == "gola"){
        scoreCounter++;
-       Destroy(other);
+       Destroy(other.gameObject);
        textScreen.text = "Score : " + scoreCounter.ToString();
      }
      else if (other.tag == "Police"){
@@ -34,6 +34,7 @@ public class DetectCol : MonoBehaviour
      }
      else if (other.tag == "Player"){
                   textScreen.text="Game Over";
+                  scoreCounter = 0;
                   GameOver();
 
      }
@@ -45,6 +46,6 @@ public class DetectCol : MonoBehaviour
     }
 
     void GameOver() {
-     Application.LoadLevel("NavigationMesh");
+     Application.LoadLevel("Menu");
  }
 }
