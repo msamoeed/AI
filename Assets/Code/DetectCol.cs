@@ -34,23 +34,24 @@ public class DetectCol : MonoBehaviour
             Destroy(other.gameObject);
         print("Hello mate, leave me alone");
      }
-      if (other.tag == "Player"){
-                  textScreen.text="Game Over";
-                  scoreCounter = 0;
-                  GameOver();
+    //   if (other.tag == "Player"){
+    //               textScreen.text="Game Over";
+    //               scoreCounter = 0;
+    //               GameOver();
 
-     }
+    //  }
       if (other.tag == "Terrain"){
        
      }
      if (other.tag == "End"){
        textScreen.text = "Oho Game Over!";
+       Application.LoadLevel(1);
      }
       
         
     }
 
     void GameOver() {
-     Application.LoadLevel("Menu");
+     Application.LoadLevel(1);
  }
 }
