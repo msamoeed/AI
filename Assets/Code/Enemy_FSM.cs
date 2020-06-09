@@ -63,7 +63,7 @@ public class Enemy_FSM : MonoBehaviour {
 
     public IEnumerator EnemyPatrol () {
         while (currentState == ENEMY_STATES.patrol) {
-            agent.speed = 30;
+            agent.speed = 45;
             checkMyVision.sensitivity = LineOfSight.Sensitivity.HIGH;
             agent.isStopped = false;
             agent.SetDestination (patrolDestination.position);

@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Moeed.unity
+    guid: 5071ca89428a04ab4986b238ad11f16f
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 3f6f9e88a836843768fc4fcfdbdf7d08
+  - enabled: 1
+    path: Assets/Scenes/Khadija.unity
+    guid: 8ac40ca7f2bc84714b71f926888e2164
   m_configObjects: {}

@@ -29,6 +29,14 @@ public class DetectCol : MonoBehaviour
        Destroy(gameObject);
        textScreen.text = "Score : " + scoreCounter.ToString();
      }
+if (other.tag == "Points"){
+       scoreCounter = scoreCounter + 5;
+       Destroy(other.gameObject);
+       Destroy(gameObject);
+       textScreen.text = "Score : " + scoreCounter.ToString();
+     }
+
+
      
     if (other.tag == "Police"){
             Destroy(other.gameObject);
