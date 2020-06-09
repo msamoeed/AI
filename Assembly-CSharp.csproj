@@ -45,6 +45,7 @@
      <Compile Include="Assets\Code\MovementController.cs" />
      <Compile Include="Assets\Code\Shoot.cs" />
      <Compile Include="Assets\Code\SpawnManager.cs" />
+     <Compile Include="Assets\Code\Spawner.cs" />
      <Compile Include="Assets\Code\textScreen.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />

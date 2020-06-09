@@ -26,20 +26,25 @@ public class DetectCol : MonoBehaviour
      if (other.tag == "gola"){
        scoreCounter++;
        Destroy(other.gameObject);
+       Destroy(gameObject);
        textScreen.text = "Score : " + scoreCounter.ToString();
      }
-     else if (other.tag == "Police"){
-
+     
+    if (other.tag == "Police"){
+            Destroy(other.gameObject);
         print("Hello mate, leave me alone");
      }
-     else if (other.tag == "Player"){
+      if (other.tag == "Player"){
                   textScreen.text="Game Over";
                   scoreCounter = 0;
                   GameOver();
 
      }
-     else if (other.tag == "Terrain"){
+      if (other.tag == "Terrain"){
        
+     }
+     if (other.tag == "End"){
+       textScreen.text = "Oho Game Over!";
      }
       
         
